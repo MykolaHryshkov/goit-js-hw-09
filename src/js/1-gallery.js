@@ -22,11 +22,15 @@ function createGalleryMarkup(items) {
     .join('');
 }
 
-galleryList.innerHTML = createGalleryMarkup(images);
+// Перевіряємо, що елемент існує
+if (galleryList) {
+  galleryList.innerHTML = createGalleryMarkup(images);
 
-
-new SimpleLightbox('.gallery a', {
-  captionsData: 'alt',     
-  captionPosition: 'bottom', 
-  captionDelay: 250,        
-});
+  new SimpleLightbox('.gallery a', {
+    captionsData: 'alt',     
+    captionPosition: 'bottom', 
+    captionDelay: 250,        
+  });
+} else {
+  console.error('Елемент .gallery не знайдено у DOM!');
+}
